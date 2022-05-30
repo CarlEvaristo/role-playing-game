@@ -1,25 +1,34 @@
-/*
-Challenge: 
-1. Take the hard-coded HTML for the Wizard card, bring it 
-   into index.js and then inject it back into its div with 
-   JavaScript.
-2. Do the same for Orc card. 
-*/
+import {characterData} from "./data.js"
+import {getDiceRollArray} from "./utils.js"
 
-document.getElementById("hero").innerHTML = `
-    <div class="character-card">
-        <h4 class="name"> Wizard </h4>
-        <img class="avatar" src="images/wizard.png"/>
-        <p class="health">health: <b> 60 </b></p>
-        <div class="dice-container"><div class="dice"> 6 </div></div>
-    </div>
-`
 
-document.getElementById("monster").innerHTML = `
-    <div class="character-card">
-        <h4 class="name"> Orc </h4>
-        <img class="avatar" src="images/orc.png"/>
-        <p class="health">health: <b> 10 </b></p>
-        <div class="dice-container"><div class="dice"> 4 </div></div>
-    </div>
-`
+function Character(data) {
+    Object.assign(this, data)
+    const { elementId, name, avatar, health, diceCount} = this;
+
+    this.getDiceHtml = () => getDiceRollArray(diceCount).map(dice => `<div class="dice">${dice}</div>`).join("")
+    
+    
+    this.getCharacterHtml = function() {
+        return  `<div class="character-card">
+                    <h4 class="name"> ${name} </h4>
+                    <img class="avatar" src="${avatar}" />
+                    <div class="health">health: <b> ${health} </b></div>
+                    <div class="dice-container">
+                        ${this.getDiceHtml()}
+                    </div>
+                </div>`
+    }
+}
+
+function render(data) {
+    document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml();
+    document.getElementById(orc.elementId).innerHTML = orc.getCharacterHtml();
+}
+
+/*Does something here need to change?*/
+const {hero,monster} = characterData
+const wizard = new Character(hero)
+const orc = new Character(monster)
+render()
+document.getElementById("attack-button").addEventListener("click", () => render())
