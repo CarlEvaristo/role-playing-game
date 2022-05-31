@@ -2,43 +2,65 @@ import {characterData} from "./data.js"
 import Character from "./character.js"
 
 
+/*
+Challenge
+1. Make it so getNewMonster returns a new instance of Character. Think
+what argument you should be passing. If there are no more monsters in the 
+array, getNewMonster should return an empty object {}.
+2. Down near the bottom of the file, set a new variable "monster" equal 
+to our new function getNewMonster.
+3. Delete any code we no longer need.
+- The app will still be broken - don't worry for now!
+**hint.md for help!!**
+*/
+
+
+let monstersArray = ["orc", "demon", "goblin"];
+
+function getNewMonster() {
+    const nextMonsterData = characterData[monstersArray.shift()]
+    return (nextMonsterData) ? new Character(nextMonsterData) : {} 
+}
+
 function render() {
     document.getElementById("hero").innerHTML = wizard.getCharacterHtml();
-    document.getElementById("monster").innerHTML = orc.getCharacterHtml();
+    document.getElementById("monster").innerHTML = monster.getCharacterHtml();
 }
+
+/*
+Challenge
+1. Change the attack function so that when a monster dies, 
+the next monster replaces it. If there are no more monsters,
+call endGame(). 
+2. Make sure that endGame() still gets called if the wizard
+is killed.
+*/
 
 
 function attack() {
     wizard.getDiceHtml()
-    orc.getDiceHtml()
-    wizard.takeDamage(orc.currentDiceScore)
-    orc.takeDamage(wizard.currentDiceScore)
+    monster.getDiceHtml()
+    wizard.takeDamage(monster.currentDiceScore)
+    monster.takeDamage(wizard.currentDiceScore)
     render()
-    if (orc.isDead || wizard.isDead ) {
+    if (wizard.isDead & !monster.isDead) {
+        endGame()
+        console.log(11111)
+    }
+    if (monster.isDead & monstersArray.length != 0) {
+        monster = getNewMonster()
+        render()
+    }
+    if (monster.isDead & monstersArray.length == 0) {
         endGame()
     }
 }
 
-/*CHALLENGE
-1. Create a second const in endGame called endEmoji.
-2. Figure out how to set it to hold the emoji "🔮" if the 
-wizard wins, and "☠️" if the orc wins. If both characters 
-are dead use "☠️".
-3. Finally, take the html template string below render it 
-to the screen so it replaces everything else when the game 
-is over.
-`<div class="end-game">
-        <h2>Game Over</h2>
-        <h3>${endMessage}/h3>
-        <p class="end-emoji">${endEmoji}</p>
-    </div>` 
-*/
-
 function endGame() {
-    const endEmoji = (orc.isDead & !wizard.isDead) ? "🔮" : "☠️"
+    const endEmoji = (monster.isDead & !wizard.isDead) ? "🔮" : "☠️"
 
-    const endMessage = (orc.isDead & !wizard.isDead) ? "The Wizard Wins"
-        : (!orc.isDead & wizard.isDead) ? "The Orc is Victorious"
+    const endMessage = (monster.isDead & !wizard.isDead) ? "The Wizard Wins"
+        : (!monster.isDead & wizard.isDead) ? "The monster is Victorious"
         : "No victors - all creatures are dead"
 
     document.body.innerHTML = `
@@ -52,5 +74,6 @@ function endGame() {
 document.getElementById("attack-button").addEventListener("click", attack)
 
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
+let monster = getNewMonster()
+
 render()

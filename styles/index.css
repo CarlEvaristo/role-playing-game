@@ -1,5 +1,4 @@
 html, body {
-    padding: 0;
     margin: 0;    
     background: rgb(51,43,55);
     background: radial-gradient(circle, rgba(51,43,55,1) 0%, rgba(51,43,55,1) 100%);
@@ -28,7 +27,7 @@ main {
 }
 
 .character-card {
-    height:14rem;
+
     margin-top: .5rem;
     width:94vw;
     max-width: 230px;
@@ -36,7 +35,6 @@ main {
     font-size: 1.6rem;
     color: white;
     border-radius: 14px;
-    position: relative;
     background: #231d24;
     text-align: center;
     border: 0.08rem solid #000721;
@@ -47,7 +45,7 @@ main {
 @media(min-width:550px){
     .character-card {
         border: 0.2rem solid #000721;
-        height:26rem;
+        /* height:26rem; */
         width:37vw;
     }
 }
@@ -67,7 +65,7 @@ main {
 }
 
 .avatar {
-    width: 15vh;
+    width: 25vh;
     border: 2px solid #000721;
     max-width:100%;
     opacity: 0.8;
@@ -75,11 +73,6 @@ main {
     background-color: rgba(0, 7, 33, 0.8);
 }
 
-@media(min-width:550px){
-    .avatar {
-        width: 25vh;
-    }
-}
 
 .health {
     font-size:1.1rem;
@@ -89,18 +82,11 @@ main {
     margin: 1vh 5%;
     color:#ccc;
     letter-spacing: 0.03em
-}
-
-@media(min-width:550px){
-    .health {
-        margin: 2vh 5%;
-    }
-}
-
-.health b {
     font-weight: bold;
     color:#fff;
 }
+
+
 
 .health-bar-outer {
     background: #171217;
@@ -110,24 +96,19 @@ main {
     border-radius: 2px;
 }
 
-.health-bar-outer .health-bar-inner {
+.health-bar-inner {
     background: #466d34;
     height: 100%;
     border-radius: 2px;
 }
 
-.health-bar-outer .health-bar-inner.danger {
+.danger {
     background:#d1435f;
 }
 
 .dice-container {
     width:100%;
-    height: 20%;
-    position: absolute;
-    bottom:0;
-    left:0px;
-    right:0;
-    background: #000721;
+    margin: 1rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,40 +119,41 @@ main {
 
 @media(min-width:550px){
     .dice-container {
-        height: 30%;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
     }
 }
 
 .dice, .placeholder-dice{
-    height:5.5vh;
-    width:5.5vh;
+    height:8vh;
+    width:8vh;
     background: #fff;   
     border-radius: 5px;
     border:1px solid #666;
     color:#000721;
     text-align: center;
-    line-height: 6vh;
+    line-height: 8vh;
 }
 
-@media(min-width:550px){
-.dice-container .dice, .dice-container .placeholder-dice{
-    height:10vh;
-    width:10vh;
-    line-height: 10.5vh;
-}
-}
-
-.dice-container .placeholder-dice{
+.placeholder-dice{
     background-color: transparent;
 }
 
+@media(min-width:550px){
+.dice, .placeholder-dice{
+    height:8vh;
+    width:8vh;
+    line-height: 8vh;
+}
+}
+
+
+
 button {
-    margin-top: .5rem;
+    margin-top: 2rem;
     font-family: 'MedievalSharp', cursive;
     background-color: #fcc02a;
-    border: 2px solid #963404;
+    /* border: 2px solid #963404; */
     outline: none;
     padding-left:5vw;
     padding-right:5vw;
@@ -184,6 +166,18 @@ button {
     color:#963404;
     height:9vh;
     box-shadow: 0px 6px 10px -4px rgba(0,0,0,0.4);
+    transform: scale(1);
+    transition: box-shadow 200ms, transform 200ms, color 200ms;
+}
+button:hover { 
+    border:none;
+    box-shadow: 0px 0px 10px rgba(255, 242, 0, 0.622);
+    transform: scale(1.1);
+    color: #000;
+}
+button:active { 
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.781);
+    transform: scale(0.95);
 }
 
 @media(min-width:550px){
@@ -193,7 +187,6 @@ button {
 }
 
 
-button:focus { outline: 0 }
 
 .end-game{
     margin-top: 25%;
@@ -203,3 +196,11 @@ button:focus { outline: 0 }
 .end-emoji{
     font-size: 80px;
 }
+
+.progress-bar { 
+    animation: progress-bar 250ms;
+  }
+
+@keyframes progress-bar {
+    0% { width: 0; }
+ }

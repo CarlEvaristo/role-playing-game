@@ -6,7 +6,7 @@ const characterData = {
         diceCount: 3,
         currentDiceScore: []
     },
-    monster: {
+    orc: {
         charName: "Orc",
         avatar: "images/orc.png",
         health: 40,
@@ -14,16 +14,16 @@ const characterData = {
         currentDiceScore: []
     },
     demon: {
-        name: "Demon",
+        charName: "Demon",
         avatar: "images/demon.png",
         health: 25,
         diceCount: 2,
         currentDiceScore: []
     },
     goblin: {
-        name: "Goblin",
+        charName: "Goblin",
         avatar: "images/goblin.png",
-        health: 20,
+        health: 40,
         diceCount: 3,
         currentDiceScore: []
     }
