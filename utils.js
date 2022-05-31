@@ -3,7 +3,7 @@ function getDiceRollArray(diceCount) {
 }
 
 function getDicePlaceholderHtml(diceCount) {
-    return new Array(diceCount).fill("").map(()=>`<div class="placeholder-dice"></div>`).join("")
+    return new Array(diceCount).fill("").map(()=>`<div class="dice placeholder-dice"></div>`).join("")
 }
 
 let getPercentage = (remainingHealth, maximumHealth) => (100*remainingHealth)/maximumHealth

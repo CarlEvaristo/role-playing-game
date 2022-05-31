@@ -11,43 +11,43 @@ html, body {
 }
 
 main {
-    min-width: 30vw;
     display:flex;
     flex-direction: column;
     align-items:center;
-    justify-content: space-between;
+    justify-content:center;
+    min-height: 100vh;
+    min-width: 100vw;
 } 
 .container {
+    width: 100%;
     display:flex;
     flex-direction: column;
     align-items:center;
-    justify-content:space-evenly;
-    gap: 2rem;
+    justify-content:space-between;
 }
 
 @media(min-width:550px){
     main {
+        min-height: 100vh;
+        min-width: 100vw;
         display:flex;
         flex-direction: column;
         align-items:center;
-        justify-content:space-evenly;
-        height: 100vh;
-        gap: 2rem;
     } 
 
     .container {
+        width: 90%;
         display:flex;
         flex-direction: row;
         justify-content:center;
-        gap: 2rem;
     }
 
 }
 
 .character-card {
-    min-height: 55vh;
-    max-width: 230px;
-    padding: 1vh 1vw;
+    width: 35%;
+    margin: 1% auto; 
+    padding: 5%;
     font-size: 1.6rem;
     color: white;
     border-radius: 14px;
@@ -60,13 +60,14 @@ main {
 
 @media(min-width:550px){
     .character-card {
+        width: 90%;
+        max-width: 400px;
         border: 0.2rem solid #000721;
-        width:37vw;
     }
 }
 
 .name {
-    margin: 1vh 0;
+    margin: 0.25em 0;
     width:100%;
     letter-spacing: 0.08em;
     font-size: 90%;
@@ -74,7 +75,7 @@ main {
 
 @media(min-width:550px){
     .name {
-    margin: 2vh 0;
+    margin: 0.5em 0;
     font-size: 100%;
 }
 }
@@ -93,7 +94,7 @@ main {
     font-weight: normal;
     width:90%;
     text-align: left;
-    margin: 1vh 5%;
+    margin: 5%;
     color:#ccc;
     letter-spacing: 0.03em;
     font-weight: bold;
@@ -104,7 +105,7 @@ main {
 
 .health-bar-outer {
     background: #171217;
-    height: 1vh;
+    height: 0.25em;
     width:90%;
     margin: 0 5%;
     border-radius: 2px;
@@ -138,15 +139,14 @@ main {
     }
 }
 
-.dice, .placeholder-dice{
-    width:20%;
-    height:20%;
+.dice, {
+    width:2.5em;
     background: #fff;   
     border-radius: 5px;
     border:1px solid #666;
     color:#000721;
     text-align: center;
-    line-height: 1.6;
+    line-height: 2;
 }
 
 .placeholder-dice{
@@ -157,10 +157,9 @@ main {
 button {
     font-family: 'MedievalSharp', cursive;
     background-color: #fcc02a;
-    /* border: 2px solid #963404; */
     outline: none;
-    margin-top:2vh;
-    padding: 2vw 5vw;
+    margin-top: 1em;
+    padding:  .3em 1em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -183,7 +182,11 @@ button:active {
     transform: scale(0.95);
 }
 
-
+@media(min-width:550px){
+    button {
+        padding: 1em 3em;
+    }
+}
 
 
 .end-game{
