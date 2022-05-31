@@ -41,7 +41,7 @@ function endGame() {
         : (!orc.isDead & wizard.isDead) ? "The Orc is Victorious"
         : "No victors - all creatures are dead"
 
-    document.getElementById("actions").innerHTML = `
+    document.body.innerHTML = `
     <div class="end-game">
         <h2>Game Over</h2>
         <h3>${endMessage}</h3>

@@ -9,7 +9,7 @@ const characterData = {
     monster: {
         charName: "Orc",
         avatar: "images/orc.png",
-        health: 100,
+        health: 40,
         diceCount: 1,
         currentDiceScore: []
     }

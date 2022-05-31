@@ -6,5 +6,8 @@ function getDicePlaceholderHtml(diceCount) {
     return new Array(diceCount).fill("").map(()=>`<div class="placeholder-dice"></div>`).join("")
 }
 
-export {getDiceRollArray, getDicePlaceholderHtml}
+let getPercentage = (remainingHealth, maximumHealth) => (100*remainingHealth)/maximumHealth
+
+
+export {getDiceRollArray, getDicePlaceholderHtml, getPercentage}
 

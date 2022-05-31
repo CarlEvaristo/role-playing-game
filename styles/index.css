@@ -1,6 +1,3 @@
-/* * {
-    box-sizing: border-box;
-} */
 html, body {
     padding: 0;
     margin: 0;    
@@ -12,9 +9,7 @@ html, body {
     color:#fff;
     font-family: 'MedievalSharp', cursive;
 }
-h2 {
-    margin-top: 0 ;
-}
+
 main {
     display:flex;
     flex-direction: column;
@@ -44,8 +39,7 @@ main {
     position: relative;
     background: #231d24;
     text-align: center;
-    overflow: hidden;
-    border: 0.2rem solid #000721;
+    border: 0.08rem solid #000721;
     box-shadow: inset 0px 0px 6px 2px rgba(100,100,100,0.2),
                 0px 0px 10px rgba(117,182,214,0.2);
 }
@@ -138,6 +132,8 @@ main {
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
 }
 
 @media(min-width:550px){
@@ -196,14 +192,14 @@ button {
     }
 }
 
+
 button:focus { outline: 0 }
 
 .end-game{
-    margin-top: 5%;
+    margin-top: 25%;
     text-align: center;
 }
 
 .end-emoji{
     font-size: 80px;
-    margin: 0;
 }
