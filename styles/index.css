@@ -1,35 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;    
     background: rgb(51,43,55);
     background: radial-gradient(circle, rgba(51,43,55,1) 0%, rgba(51,43,55,1) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color:#fff;
     font-family: 'MedievalSharp', cursive;
 }
 
 main {
+    min-width: 30vw;
     display:flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: .5rem;
+    align-items:center;
+    justify-content: space-between;
 } 
+.container {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:space-evenly;
+    gap: 2rem;
+}
 
 @media(min-width:550px){
-   main {
-        flex-direction: row;
-        margin:6vh 5vw;
-        justify-content: center;
-        width:86vw;
+    main {
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:space-evenly;
+        height: 100vh;
         gap: 2rem;
     } 
+
+    .container {
+        display:flex;
+        flex-direction: row;
+        justify-content:center;
+        gap: 2rem;
+    }
+
 }
 
 .character-card {
-
-    margin-top: .5rem;
-    width:94vw;
+    min-height: 55vh;
     max-width: 230px;
     padding: 1vh 1vw;
     font-size: 1.6rem;
@@ -45,7 +61,6 @@ main {
 @media(min-width:550px){
     .character-card {
         border: 0.2rem solid #000721;
-        /* height:26rem; */
         width:37vw;
     }
 }
@@ -65,9 +80,8 @@ main {
 }
 
 .avatar {
-    width: 25vh;
     border: 2px solid #000721;
-    max-width:100%;
+    max-width:90%;
     opacity: 0.8;
     border-radius: 10px;
     background-color: rgba(0, 7, 33, 0.8);
@@ -81,7 +95,7 @@ main {
     text-align: left;
     margin: 1vh 5%;
     color:#ccc;
-    letter-spacing: 0.03em
+    letter-spacing: 0.03em;
     font-weight: bold;
     color:#fff;
 }
@@ -125,38 +139,28 @@ main {
 }
 
 .dice, .placeholder-dice{
-    height:8vh;
-    width:8vh;
+    width:20%;
+    height:20%;
     background: #fff;   
     border-radius: 5px;
     border:1px solid #666;
     color:#000721;
     text-align: center;
-    line-height: 8vh;
+    line-height: 1.6;
 }
 
 .placeholder-dice{
     background-color: transparent;
 }
 
-@media(min-width:550px){
-.dice, .placeholder-dice{
-    height:8vh;
-    width:8vh;
-    line-height: 8vh;
-}
-}
-
-
 
 button {
-    margin-top: 2rem;
     font-family: 'MedievalSharp', cursive;
     background-color: #fcc02a;
     /* border: 2px solid #963404; */
     outline: none;
-    padding-left:5vw;
-    padding-right:5vw;
+    margin-top:2vh;
+    padding: 2vw 5vw;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -164,7 +168,6 @@ button {
     border-radius: 6px;
     cursor: pointer;
     color:#963404;
-    height:9vh;
     box-shadow: 0px 6px 10px -4px rgba(0,0,0,0.4);
     transform: scale(1);
     transition: box-shadow 200ms, transform 200ms, color 200ms;
@@ -180,11 +183,6 @@ button:active {
     transform: scale(0.95);
 }
 
-@media(min-width:550px){
-    button {
-        margin-top: 0;
-    }
-}
 
 
 
