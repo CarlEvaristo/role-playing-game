@@ -66,11 +66,10 @@ main {
     .character-card {
         width: 40vw;
         max-width: 350px;
-    }
-}
+}   }
 
 .name {
-    font-size:1.4em;
+    font-size:1.1em;
     font-weight: 900;
     margin: 0.25em 0;
     width:100%;
