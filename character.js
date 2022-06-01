@@ -7,6 +7,10 @@ function Character(data) {
 
     this.diceHtml = getDicePlaceholderHtml(this.diceCount)
 
+    this.setDicePlaceholderHtml = () => {
+        this.diceHtml = getDicePlaceholderHtml(this.diceCount)
+    }
+
     this.setDiceHtml = () => {
         this.currentDiceScore = getDiceRollArray(this.diceCount);
         data.currentDiceScore = this.currentDiceScore

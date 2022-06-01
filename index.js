@@ -14,15 +14,6 @@ function render() {
 }
 
 
-/*
-Challenge
-1. Disable the user's ability to attack when a monster dies.
-2. Reneable the user's ability to attack when a new monster
-loads.
-3. When the game is over, disable the user's ability to attack.
-**hint.md for help!!**
-*/
-
 
 function attack() {
     wizard.setDiceHtml()
@@ -38,6 +29,7 @@ function attack() {
         attackBtn.style.display = "none"
         setTimeout(()=> {
             monster = getNewMonster()
+            wizard.setDicePlaceholderHtml()
             render()
             attackBtn.style.display = "inline"
         },1000)
