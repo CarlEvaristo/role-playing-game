@@ -1,0 +1,22 @@
+body {
+    margin:0;
+}
+
+main{
+    background-color: red;
+    width: 100vw;
+    height:100vh;
+}
+
+section {
+    width: 80vw;
+    margin: 0 auto;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    width:30vw;
+    object-fit: cover;
+}
