@@ -43,7 +43,7 @@ function endGame() {
     <div class="end-game">
         <h2>Game Over</h2>
         <h3>${endMessage}</h3>
-        <img class="end-emoji" src="/images/${endEmoji}">  
+        <img class="end-emoji" src="images/${endEmoji}">  
         <button id="replay-button">New Game</button>
     </div>` 
     document.getElementById("replay-button").addEventListener("click", () => location.reload())
