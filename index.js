@@ -13,9 +13,20 @@ function render() {
     document.getElementById("monster").innerHTML = monster.getCharacterHtml();
 }
 
+
+/*
+Challenge
+1. Disable the user's ability to attack when a monster dies.
+2. Reneable the user's ability to attack when a new monster
+loads.
+3. When the game is over, disable the user's ability to attack.
+**hint.md for help!!**
+*/
+
+
 function attack() {
-    wizard.getDiceHtml()
-    monster.getDiceHtml()
+    wizard.setDiceHtml()
+    monster.setDiceHtml()
     wizard.takeDamage(monster.currentDiceScore)
     monster.takeDamage(wizard.currentDiceScore)
     render()
@@ -24,8 +35,13 @@ function attack() {
         console.log(11111)
     }
     if (monster.isDead & monstersArray.length != 0) {
-        monster = getNewMonster()
-        render()
+        attackBtn.style.display = "none"
+        setTimeout(()=> {
+            monster = getNewMonster()
+            render()
+            attackBtn.style.display = "inline"
+        },1000)
+
     }
     if (monster.isDead & monstersArray.length == 0) {
         endGame()
@@ -39,18 +55,22 @@ function endGame() {
         : (!monster.isDead & wizard.isDead) ? "The Empire is Victorious"
         : "No victors - both sides lose"
 
-    document.body.innerHTML = `
-    <div class="end-game">
-        <h2>Game Over</h2>
-        <h3>${endMessage}</h3>
-        <img class="end-emoji" src="images/${endEmoji}">  
-        <button id="replay-button">New Game</button>
-    </div>` 
-    document.getElementById("replay-button").addEventListener("click", () => location.reload())
+    attackBtn.style.display = "none"
+    setTimeout( () => {
+        document.body.innerHTML = `
+        <div class="end-game">
+            <h2>Game Over</h2>
+            <h3>${endMessage}</h3>
+            <img class="end-emoji" src="images/${endEmoji}">  
+            <button id="replay-button">New Game</button>
+        </div>`
+        document.getElementById("replay-button").addEventListener("click", () => location.reload())
+    },1000)
 
 }
 
-document.getElementById("attack-button").addEventListener("click", attack)
+const attackBtn = document.getElementById("attack-button")
+attackBtn.addEventListener("click", attack)
 
 const wizard = new Character(characterData.jedi)
 let monster = getNewMonster()

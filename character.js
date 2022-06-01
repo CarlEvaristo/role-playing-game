@@ -5,12 +5,12 @@ function Character(data) {
     Object.assign(this, data)
     this.maxHealth = this.health
 
-    this.diceArray = getDicePlaceholderHtml(this.diceCount)
+    this.diceHtml = getDicePlaceholderHtml(this.diceCount)
 
-    this.getDiceHtml = () => {
+    this.setDiceHtml = () => {
         this.currentDiceScore = getDiceRollArray(this.diceCount);
         data.currentDiceScore = this.currentDiceScore
-        this.diceArray = this.currentDiceScore.map(dice => `<div class="dice">${dice}</div>`).join("")
+        this.diceHtml = this.currentDiceScore.map(dice => `<div class="dice">${dice}</div>`).join("")
     }
 
     this.takeDamage = function(damage) {
@@ -32,7 +32,7 @@ function Character(data) {
     }
 
     this.getCharacterHtml = function() {
-        const { charName, avatar, health, diceCount, currentDiceScore, diceArray, getDiceHtml } = this;  
+        const { charName, avatar, health, diceCount, currentDiceScore, diceHtml, setDiceHtml } = this;  
         const healthBar = this.getHealthBarHtml()
         return  `<div class="character-card ${(charName === 'Jedi')?'light_side':''}">
                     <h2 class="name"> ${charName} </h2>
@@ -40,7 +40,7 @@ function Character(data) {
                     <div class="health">health: <b> ${health} </b></div>
                     ${healthBar}
                     <div class="dice-container">
-                        ${diceArray}
+                        ${diceHtml}
                     </div>
                 </div>`
     }
