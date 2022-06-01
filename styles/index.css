@@ -40,7 +40,7 @@ main {
 
 .character-card {
     width: 50vw;
-    margin: 0.5em; 
+    margin: 0.5em 0; 
     padding: 5%;
     color: white;
     border-radius: 14px;
@@ -81,8 +81,10 @@ main {
 
 .avatar {
     border: 2px solid #000721;
-    width: 30vh;
-    height: 15vh;
+    width: 90%;
+    height: 30vw;
+    /* width: 30vh;
+    height: 15vh; */
     opacity: 0.8;
     border-radius: 10px;
     background-color: rgba(0, 7, 33, 0.8);
@@ -91,8 +93,8 @@ main {
 }
 @media(min-width:550px){
     .avatar {
-        width: 25vw;
-        height: auto;
+        width: 90%;
+        height: 19vw;
         max-width: 300px;
 }}
 /* @media (orientation: portrait) {
