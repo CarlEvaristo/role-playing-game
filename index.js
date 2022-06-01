@@ -1,21 +1,7 @@
 import {characterData} from "./data.js"
 import Character from "./character.js"
 
-
-/*
-Challenge
-1. Make it so getNewMonster returns a new instance of Character. Think
-what argument you should be passing. If there are no more monsters in the 
-array, getNewMonster should return an empty object {}.
-2. Down near the bottom of the file, set a new variable "monster" equal 
-to our new function getNewMonster.
-3. Delete any code we no longer need.
-- The app will still be broken - don't worry for now!
-**hint.md for help!!**
-*/
-
-
-let monstersArray = ["orc", "demon", "goblin"];
+let monstersArray = ["stormtrooper", "bobafett", "darthvader"];
 
 function getNewMonster() {
     const nextMonsterData = characterData[monstersArray.shift()]
@@ -26,16 +12,6 @@ function render() {
     document.getElementById("hero").innerHTML = wizard.getCharacterHtml();
     document.getElementById("monster").innerHTML = monster.getCharacterHtml();
 }
-
-/*
-Challenge
-1. Change the attack function so that when a monster dies, 
-the next monster replaces it. If there are no more monsters,
-call endGame(). 
-2. Make sure that endGame() still gets called if the wizard
-is killed.
-*/
-
 
 function attack() {
     wizard.getDiceHtml()
@@ -57,23 +33,26 @@ function attack() {
 }
 
 function endGame() {
-    const endEmoji = (monster.isDead & !wizard.isDead) ? "🔮" : "☠️"
+    const endEmoji = (monster.isDead & !wizard.isDead) ? "babyyoda.gif" : (!monster.isDead & wizard.isDead) ? "dartvader.gif" : "novictors.gif"
 
-    const endMessage = (monster.isDead & !wizard.isDead) ? "The Wizard Wins"
-        : (!monster.isDead & wizard.isDead) ? "The monster is Victorious"
-        : "No victors - all creatures are dead"
+    const endMessage = (monster.isDead & !wizard.isDead) ? "The Light Side Wins"
+        : (!monster.isDead & wizard.isDead) ? "The Empire is Victorious"
+        : "No victors - both sides lose"
 
     document.body.innerHTML = `
     <div class="end-game">
         <h2>Game Over</h2>
         <h3>${endMessage}</h3>
-        <p class="end-emoji">${endEmoji}</p>
+        <img class="end-emoji" src="/images/${endEmoji}">  
+        <button id="replay-button">New Game</button>
     </div>` 
+    document.getElementById("replay-button").addEventListener("click", () => location.reload())
+
 }
 
 document.getElementById("attack-button").addEventListener("click", attack)
 
-const wizard = new Character(characterData.hero)
+const wizard = new Character(characterData.jedi)
 let monster = getNewMonster()
 
 render()

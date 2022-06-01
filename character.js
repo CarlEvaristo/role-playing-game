@@ -34,7 +34,7 @@ function Character(data) {
     this.getCharacterHtml = function() {
         const { charName, avatar, health, diceCount, currentDiceScore, diceArray, getDiceHtml } = this;  
         const healthBar = this.getHealthBarHtml()
-        return  `<div class="character-card">
+        return  `<div class="character-card ${(charName === 'Jedi')?'light_side':''}">
                     <h4 class="name"> ${charName} </h4>
                     <img class="avatar" src="${avatar}" />
                     <div class="health">health: <b> ${health} </b></div>
