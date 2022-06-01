@@ -7,7 +7,7 @@ body {
     background-color: #e6e5e8;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%23b6b5b7' fill-opacity='0.32'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     color:#000721;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Orbitron', sans-serif;
 }
 
 main {
@@ -19,7 +19,7 @@ main {
     min-width: 100vw;
 } 
 .container {
-    margin-top: 2em;
+    margin-top: 0.25em;
     width: 60%;
     display:flex;
     flex-direction: column;
@@ -29,6 +29,7 @@ main {
 
 @media(min-width:550px){
     .container {
+        margin-top: 2em;
         width: 90%;
         display:flex;
         flex-direction: row;
@@ -37,10 +38,9 @@ main {
 }
 
 .character-card {
-    width: 70%;
-    margin: 1% auto; 
+    width: 50vw;
+    margin: 0.5em; 
     padding: 5%;
-    font-size: 1.6rem;
     color: white;
     border-radius: 14px;
     background: #5e5e5e;
@@ -56,45 +56,53 @@ main {
 
 @media(min-width:550px){
     .character-card {
-        width: 80%;
-        max-width: 400px;
+        width: 30vw;
+        max-width: 350px;
+    }
+}
+
+@media (orientation: portrait) {
+    .character-card {
+        width: 40vw;
+        max-width: 350px;
     }
 }
 
 .name {
+    font-size:1.4em;
+    font-weight: 900;
     margin: 0.25em 0;
     width:100%;
-    letter-spacing: 0.08em;
-    font-size: 90%;
 }
 
-@media(min-width:550px){
+@media(min-width:900px){
     .name {
-    margin: 0.5em 0;
-    font-size: 100%;
-}
-}
+        font-size:1.7em;
+}}
 
 .avatar {
     border: 2px solid #000721;
-    width: 50%;
-    height: 50%;
+    width: 30vh;
+    height: 10vh;
     opacity: 0.8;
     border-radius: 10px;
     background-color: rgba(0, 7, 33, 0.8);
     object-fit: cover;
+    object-position: center 20%;
 }
-
 @media(min-width:550px){
     .avatar {
-        width: 80%;
-        height: 80%;
+        width: 25vw;
+        height: auto;
+        max-width: 300px;
+}}
+@media (orientation: portrait) {
+    .avatar {
+        width: 35vw;
+    }
 }
-}
-
 .health {
-    font-size:1.1rem;
-    font-weight: normal;
+    font-size:1.1em;
     width:90%;
     text-align: left;
     margin: 5%;
@@ -126,23 +134,22 @@ main {
     justify-content: space-evenly;
 }
 
-
-.dice {
-    width:2.5em;
-    height:2em;
+.dice, .placeholder-dice {
+    width:3em;
+    height:3em;
     background: #fff;   
     border-radius: 5px;
     border:1px solid rgb(0, 0, 0);
     color:#000721;
     text-align: center;
-    line-height: 2;
+    line-height: 3;
 }
-
-.placeholder-dice{
-    background: #fff;  
-    width:2.5em;
-    height:2em;
-}
+@media(min-width:1000px){
+    .dice, .placeholder-dice {
+        width:5em;
+        height:5em;
+        line-height: 5;
+}}
 
 button {
     background-color: #fcc02a;
@@ -153,6 +160,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 1.5rem;
+    font-weight: 900;
     border-radius: 10px;
     cursor: pointer;
     color: #000;
@@ -164,9 +172,7 @@ button:hover {
     background-color: #ffdc30;
     transform: scale(1.1);
 }
-button:active { 
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.781);
-}
+
 
 @media(min-width:550px){
     button {
