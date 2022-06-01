@@ -27,12 +27,12 @@ function attack() {
         console.log(11111)
     }
     if (monster.isDead & monstersArray.length != 0) {
-        attackBtn.style.display = "none"
+        attackBtn.style.visibility = "hidden"
         setTimeout(()=> {
             monster = getNewMonster()
             wizard.setDicePlaceholderHtml()
             render()
-            attackBtn.style.display = "inline"
+            attackBtn.style.visibility = "visible"
         },1000)
 
     }
@@ -48,7 +48,7 @@ function endGame() {
         : (!monster.isDead & wizard.isDead) ? "The Empire is Victorious"
         : "No victors - both sides lose"
 
-    attackBtn.style.display = "none"
+    attackBtn.style.visibility = "hidden"
     setTimeout( () => {
         document.body.innerHTML = `
         <div class="end-game">
