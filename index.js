@@ -9,8 +9,9 @@ function getNewMonster() {
 }
 
 function render() {
-    document.getElementById("hero").innerHTML = wizard.getCharacterHtml();
     document.getElementById("monster").innerHTML = monster.getCharacterHtml();
+    document.getElementById("hero").innerHTML = wizard.getCharacterHtml();
+
 }
 
 
@@ -18,8 +19,8 @@ function render() {
 function attack() {
     wizard.setDiceHtml()
     monster.setDiceHtml()
-    wizard.takeDamage(monster.currentDiceScore)
     monster.takeDamage(wizard.currentDiceScore)
+    wizard.takeDamage(monster.currentDiceScore)
     render()
     if (wizard.isDead & !monster.isDead) {
         endGame()

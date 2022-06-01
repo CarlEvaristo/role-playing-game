@@ -25,24 +25,28 @@ function Character(data) {
         } 
     }
 
+    this.percent = getPercentage(this.health, this.maxHealth)
+
+
     this.getHealthBarHtml = () => {
-        const percent = (getPercentage(this.health, this.maxHealth))
+        this.oldPercent = this.percent
+        this.percent = getPercentage(this.health, this.maxHealth)
+        console.log(`name: ${this.charName} || Percent: ${this.percent} || oldPercent: ${this.oldPercent}`);
         return `
         <div class="health-bar-outer">
-            <div class="progress-bar health-bar-inner ${(percent<25)? 'danger' : ''}" 
-                style="width: ${percent}%;">
+            <div class="health-bar-inner ${(this.percent<25)? 'danger' : ''}" 
+                style="width: ${this.percent}%; --from-width:${this.oldPercent}%; --to-width:${this.percent}%; animation:progress-bar 1s;">
             </div>
         </div>`
     }
 
     this.getCharacterHtml = function() {
         const { charName, avatar, health, diceCount, currentDiceScore, diceHtml, setDiceHtml } = this;  
-        const healthBar = this.getHealthBarHtml()
         return  `<div class="character-card ${(charName === 'Jedi')?'light_side':''}">
                     <h2 class="name"> ${charName} </h2>
                     <img class="avatar" src="${avatar}" />
                     <div class="health">health: <b> ${health} </b></div>
-                    ${healthBar}
+                    ${this.getHealthBarHtml()}
                     <div class="dice-container">
                         ${diceHtml}
                     </div>
